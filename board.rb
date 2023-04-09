@@ -23,11 +23,11 @@ class Board
   end
 
   def check_move?(place)
-    @game_board[place.to_i - 1].between?(0, 8)
+    @game_board[place - 1] == place
   end
 
   def full?
-    @game_board.any? { |single| single =~ /[^0-9]/ }
+    @game_board.all? { |single| single =~ /[^0-9]/ }
   end
 
   def check_win?

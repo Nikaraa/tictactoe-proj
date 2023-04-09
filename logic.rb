@@ -33,7 +33,7 @@ class Game
 
   def update_board(player)
     move = turn_move(player)
-    board.new_board(move.to_i - 1, player.sign)
+    board.new_board(move.to_i-1, player.sign)
     board.show_board
   end
 
@@ -57,11 +57,11 @@ class Game
   def turn_move(player)
     loop do
       player_move(player.name, player.sign)
-      num = gets.chomp
+      num = gets.chomp.to_i
       if (board.check_move?(num))
         return num
+      else error_alert()
       end
-      error_alert()
     end
   end
 

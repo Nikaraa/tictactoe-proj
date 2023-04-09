@@ -10,7 +10,7 @@ def repeat?
     new_game = Game.new
     new_game.play_game
   else
-    "Bye, thank you for playing the game!"
+    puts "Bye, thank you for playing the game!"
   end
 end
 
