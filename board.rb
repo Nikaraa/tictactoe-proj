@@ -1,6 +1,6 @@
 class Board
   attr_accessor :game_board, :turn
-  you_win_if = [
+  YOU_WIN_IF = [
     [0, 1, 2], [3, 4, 5], [6, 7, 8],
     [0, 3, 6], [1, 4, 7], [2, 5, 8],
     [0, 4, 8], [2, 4, 6],
@@ -8,7 +8,6 @@ class Board
 
   def initialize
     @game_board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-    @turn = 1
   end
 
   def show_board
@@ -23,15 +22,17 @@ class Board
     @game_board[place] = sign
   end
 
-  def check_board?(place)
-    @game_board[place - 1].between?(0, 8)
+  def check_move?(place)
+    @game_board[place.to_i - 1].between?(0, 8)
+  end
+
+  def full?
+    @game_board.any? { |single| single =~ /[^0-9]/ }
   end
 
   def check_win?
-    you_win_if.any? do |winning_combinations|
-      [game_board[winning_combinations[0]],
-       game_board[winning_combinations[1]],
-       game_board[winning_combinations[2]]].uniq.length == 1
+    YOU_WIN_IF.any? do |comb|
+      [game_board[comb[0]], game_board[comb[1]], game_board[comb[2]]].uniq.length == 1
     end
   end
 end

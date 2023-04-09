@@ -8,7 +8,7 @@ module Display
   end
 
   def ask_sign
-    puts "Please, enter a correct character for the #{num} player."
+    return puts "Please, enter a character for the player."
   end
 
   def player2_sign(player1_sign)
